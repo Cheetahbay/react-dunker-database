@@ -1,0 +1,79 @@
+body {
+  height: 100%;
+  background-color: #2B2B2B !important;
+
+}
+
+
+.main-app {
+  padding: 5rem 15%;
+}
+
+.dunker-title {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 0px 50px;
+  width: max-content;
+  box-shadow: 4px 4px 15px black;
+}
+
+.dunker-league {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 0px 50px;
+  width: max-content;
+  box-shadow: 4px 4px 15px black;
+  
+
+}
+.dunker-body {
+  margin-top: 25px;
+  border-radius: 5px;
+  padding: 25px;
+  width: auto;
+  box-shadow: 4px 4px 15px black;
+  border: 5px solid linear-gradient(red, yellow);
+
+}
+
+.primary {
+  background-color: #1D1D1D;
+  color: #E4E4E4;
+}
+
+.secondary {
+  background-color: #32078E;
+  color: #E4E4E4;
+
+}
+
+.dunker-avatar {
+  /* max-width: 100%;
+  border-width: 4px;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      red, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;   */
+  width: 100%;
+  min-width: 200px;
+  object-fit: fill;
+  color: white;
+  border-width: 3px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to bottom, 
+      rgba(211, 211, 211, 0.5), 
+      #32078E
+    ) 100 100;
+}
+
+.dunker-button {
+  border-radius: 5px;
+  padding: 0 25px;
+  width: fit-content;
+  box-shadow: 4px 4px 15px black;
+  margin: 5px;
+}

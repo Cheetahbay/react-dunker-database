@@ -1,0 +1,8 @@
+.league__buttons {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+}

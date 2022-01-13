@@ -1,0 +1,32 @@
+.container {
+    margin-top: 25px;
+    width: 50%;
+}
+.dunker__folder__tab {
+    border: 1px solid white;
+    height: 50px;
+    width: 25%;
+    border-top-left-radius: 20px;
+}
+
+.dunker__folder__body {
+    border: 1px solid white;
+    height: 600px;
+}
+
+.dunker__avatar {
+ background-color: red;
+ height: 50%;
+}
+
+.dunker__description {
+background-color: aqua;
+}
+
+.dunker__attributes {
+    background-color: blueviolet;
+}
+
+img {
+    width: 50%;
+}

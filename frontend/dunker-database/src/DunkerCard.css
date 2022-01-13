@@ -1,0 +1,20 @@
+.card-header {
+    background-color: rgb(50, 50, 150);
+    color: white;
+}
+.card {
+    background-color: #2e2e2e;
+    margin-bottom: 10px;
+}
+img {
+    object-fit: fill;
+}
+
+.media-buttons {
+    display: flex;
+    justify-content: left;
+}
+
+.btn {
+    margin: 5px;
+}
