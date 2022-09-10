@@ -37,9 +37,4 @@ def dunker_attributes(name, attrs: Attributes):
     return DunkerEntity(db.find_one({"Name": name}))
 
 
-async def get_jordan():
 
-    response =  await requests.get('https://localhost:8000/dunkers/Jordan%20Kilganon').text
-    print(response)
-    
-get_jordan()

@@ -6,7 +6,7 @@ import DunkerSummary from "./components/DunkerSummary";
 import LeagueTitle from "./components/LeagueTitle";
 import DunkerAttributes from "./components/DunkerAttributes";
 import MenuWell from "./components/MenuWell";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import "./App.css";
 import ListCard from "./components/ListCard";
 import DunkerFullProfile from "./components/DunkerFullProfile";
@@ -41,7 +41,6 @@ const App = () => {
       <MenuWell changeLeague={(league) => setLeague(league)} />
       <h2 style={{ color: "red" }}>{league}</h2>
       <div className="container main-app">
-        <button onClick={() => setDunkerProfile(undefined)}>Reset</button>
         {dunkerProfile === undefined ? (
           <ul>
             {dunkers.map((dunker) => {
@@ -65,10 +64,10 @@ const App = () => {
             avatar={dunkerProfile.Avatar}
           />
         )}
-        <hr/>
-        <footer>
+        <hr />
+        <Button onClick={() => setDunkerProfile(undefined)}>Back</Button>
 
-        </footer>
+        <footer></footer>
       </div>
     </div>
   );
