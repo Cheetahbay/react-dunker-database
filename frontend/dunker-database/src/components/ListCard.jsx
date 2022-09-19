@@ -20,6 +20,7 @@ const ListCard = ({ name, avatar, league, location, fetchDunker }) => {
             <div className="col">
               <a href="#" value={name}>
                 <Avatar
+                  className="mb-2"
                   src={avatar}
                   alt={avatar}
                   sx={aviSize}
