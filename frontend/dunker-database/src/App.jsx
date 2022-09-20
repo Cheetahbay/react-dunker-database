@@ -34,7 +34,7 @@ const App = () => {
       setDunkers(leagueRes.data);
     };
     changeLeague();
-  }, [league]);
+  }, [dunkerName]);
 
   return (
     <div>
@@ -70,7 +70,14 @@ const App = () => {
           />
         )}
         <hr />
-        <Button onClick={() => setDunkerProfile(undefined)}>Back</Button>
+        <Button
+          onClick={() => {
+            setDunkerProfile(undefined);
+            setDunkerName("");
+          }}
+        >
+          Back
+        </Button>
 
         <footer></footer>
       </div>
