@@ -34,7 +34,7 @@ const App = () => {
       setDunkers(leagueRes.data);
     };
     changeLeague();
-  }, [dunkerName]);
+  }, [league]);
 
   return (
     <div>
