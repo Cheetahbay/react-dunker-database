@@ -38,9 +38,14 @@ const App = () => {
 
   return (
     <div>
-      <MenuWell changeLeague={(league) => setLeague(league)} />
-      <h2 style={{ color: "red" }}>{league}</h2>
+      <MenuWell
+        changeLeague={(league) => {
+          setLeague(league);
+          setDunkerProfile(undefined);
+        }}
+      />
       <div className="container main-app">
+        <h2 className="text-warning text-center">{league}</h2>
         {dunkerProfile === undefined ? (
           <ul>
             {dunkers.map((dunker) => {
