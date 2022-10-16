@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
-import DunkerTitle from "./components/DunkerTitle";
-import DunkerAvatar from "./components/DunkerAvatar";
 import axios from "axios";
-import DunkerSummary from "./components/DunkerSummary";
-import LeagueTitle from "./components/LeagueTitle";
-import DunkerAttributes from "./components/DunkerAttributes";
 import MenuWell from "./components/MenuWell";
-import { Container, Row, Col, Button } from "react-bootstrap";
 import "./App.css";
 import ListCard from "./components/ListCard";
 import DunkerFullProfile from "./components/DunkerFullProfile";
+import MainLeague from "./components/MainLeague";
+import BackButton from "./components/BackButton";
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
-  const [dunkers, setDunkers] = useState([]);
+  const [dunkersColOne, setDunkersColOne] = useState([]);
+  const [dunkersColTwo, setDunkersColTwo] = useState([]);
+  const [dunker, setDunker] = useState([]);
   const [dunkerProfile, setDunkerProfile] = useState(undefined);
   const [dunkerName, setDunkerName] = useState("");
   const [league, setLeague] = useState("PRO");
+
+  function handleBack() {
+    setDunkerProfile(undefined);
+    setDunkerName("");
+  }
 
   useEffect(() => {
     const fetchDunker = async () => {
@@ -31,7 +33,10 @@ const App = () => {
   useEffect(() => {
     const changeLeague = async () => {
       const leagueRes = await axios(`/dunkers/league/${league}`);
-      setDunkers(leagueRes.data);
+      // setDunker(leagueRes.data);
+      const len = leagueRes.length;
+      setDunkersColOne(leagueRes.data.slice(0, leagueRes.data.length / 2 + 1));
+      setDunkersColTwo(leagueRes.data.slice((leagueRes.data.length / 2) * -1));
     };
     changeLeague();
   }, [league]);
@@ -44,22 +49,43 @@ const App = () => {
           setDunkerProfile(undefined);
         }}
       />
+
       <div className="container main-app">
-        <h2 className="text-warning text-center">{league}</h2>
+        <MainLeague league={league} />
         {dunkerProfile === undefined ? (
-          <ul>
-            {dunkers.map((dunker) => {
-              return (
-                <ListCard
-                  name={dunker.Name}
-                  avatar={dunker.Avatar}
-                  league={dunker.League}
-                  location={dunker.Location}
-                  fetchDunker={(dunkerName) => setDunkerName(dunkerName)}
-                />
-              );
-            })}
-          </ul>
+          <div className="row">
+            <div className="col-md">
+              <ul>
+                {dunkersColOne.map((dunker) => {
+                  return (
+                    <ListCard
+                      name={dunker.Name}
+                      avatar={dunker.Avatar}
+                      league={dunker.League}
+                      location={dunker.Location}
+                      fetchDunker={(dunkerName) => setDunkerName(dunkerName)}
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+            <div className="col-md">
+              {/* Render the second half of dunkers */}
+              <ul>
+                {dunkersColTwo.map((dunker) => {
+                  return (
+                    <ListCard
+                      name={dunker.Name}
+                      avatar={dunker.Avatar}
+                      league={dunker.League}
+                      location={dunker.Location}
+                      fetchDunker={(dunkerName) => setDunkerName(dunkerName)}
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         ) : (
           <DunkerFullProfile
             name={dunkerProfile.Name}
@@ -69,18 +95,9 @@ const App = () => {
             avatar={dunkerProfile.Avatar}
           />
         )}
-        <hr />
-        <Button
-          onClick={() => {
-            setDunkerProfile(undefined);
-            setDunkerName("");
-          }}
-        >
-          Back
-        </Button>
-
-        <footer></footer>
       </div>
+      <hr />
+      <BackButton handleBack={handleBack} />
     </div>
   );
 };
